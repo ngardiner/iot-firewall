@@ -27,8 +27,12 @@ chown -R iotfw: /etc/iotfw
 chown iotfw: /usr/local/bin/iotfw-admin.py
 chown -R iotfw: /var/lib/iotfw-admin
 
-# Reload systemd config
-systemctl daemon-reload
+if [ $1 != "test" ]; then
 
-# Enable necessary services
-systemctl enable iotfw-admin.service
+  # Reload systemd config
+  systemctl daemon-reload
+
+  # Enable necessary services
+  systemctl enable iotfw-admin.service
+
+fi
