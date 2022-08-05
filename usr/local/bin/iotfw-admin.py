@@ -5,10 +5,10 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from jinja2 import Template, Environment, FileSystemLoader
 from os import getpid, path
 import pickle
+from sys import argv
 import time
 
 hostName = "0.0.0.0"
-serverPort = 8080
 
 class AdminServer(BaseHTTPRequestHandler):
 
@@ -96,13 +96,17 @@ class AdminServer(BaseHTTPRequestHandler):
 if __name__ == "__main__":        
 
     # Parse command-line options
-    try:
-        opts, args = getopt.getopt(argv, "i:")
+    opts, args = getopt.getopt(argv[1:], "i:p:")
 
     pidfn = '/var/run/iotfw/iotfw-admin.pid'
+    serverPort = 8080
+
     for opt, arg in opts:
+        print(opt)
         if opt == '-i':
             pidfn = arg
+        if opt == '-p':
+            serverPort = int(arg)
 
     # Write PID file
     with open(pidfn, 'w', encoding='utf-8') as pidfile:
