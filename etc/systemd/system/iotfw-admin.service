@@ -1,0 +1,13 @@
+[Unit]
+Description=IoT Firewall Administration Service
+After=network.target
+
+[Service]
+User=iotfw
+Group=iotfw
+Type=simple
+Restart=always
+ExecStart=/usr/local/bin/iotfw-admin.py
+
+[Install]
+WantedBy=multi-user.target

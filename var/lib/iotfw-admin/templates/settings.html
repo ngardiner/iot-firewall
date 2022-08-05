@@ -11,6 +11,15 @@
   </head>
   <body>
     {% include "menubar.html" %}
+
+    {% if cluster['name'] is not defined %}
+        You have not yet defined the cluster that this node belongs to.
+
+        <p>Please note that even for a single node deployment, the cluster must be defined.
+
+        <p>Please switch to the Clustering tab to define your cluster, before continuing.
+    {% else %}
+    {% endif %}
     <form>
     </form>
   </body>

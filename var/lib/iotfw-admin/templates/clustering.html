@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>IoT Firewall</title>
+  </head>
+  <body>
+    {% include "menubar.html" %}
+
+    {% if cluster['name'] is not defined %}
+      <h1>Create a New Cluster</h1>
+
+      <form action='/save/cluster' method=POST>
+      <table>
+        <tr>
+          <td>Cluster Name:</td><td><input name='cluster_name'></td>
+        </tr>
+        <tr>
+          <td>Cluster Key:</td><td><input type=password></td>
+        </tr>
+      </table>
+
+      <input type=submit value="Create Cluster">
+      </form>
+
+      <h1>Join an Existing Cluster</h1>
+
+      <form action='/save/config' method=POST>
+      <table>
+        <tr>
+          <td>Existing Cluster Node IP:</td> <td><input></td>
+        </tr>
+        <tr>
+          <td>Cluster Key:</td> <td><input type=password></td>
+        </tr>
+      </table>
+
+      <input type=submit value="Join Cluster">
+      </form>
+
+    {% else %}
+    {% endif %}
+    <form>
+    </form>
+  </body>
+</html>
