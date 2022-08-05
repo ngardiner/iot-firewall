@@ -7,6 +7,7 @@ from os import getpid, path
 import pickle
 from sys import argv
 import time
+import urllib.parse
 
 hostName = "0.0.0.0"
 
@@ -65,11 +66,23 @@ class AdminServer(BaseHTTPRequestHandler):
             self.end_headers()
 
     def do_POST(self):
+
+        # Parse any post parameters
+        length = int(self.headers.get('content-length', 0))
+        field_data = self.rfile.read(length)
+        fields = urllib.parse.parse_qs(field_data)
+        print(fields)
+
+        # Check post routes
         if self.path.startswith('/api'):
             if self.path == '/api/cluster/join':
                 return
         elif self.path == '/save/cluster':
             # Save cluster hash
+            if fields.get(b'cluster_name', None):
+                self.cluster['cluster_name'] = fields.get(b'cluster_name', [b""])[0].decode("utf-8")
+            if fields.get(b'cluster_key', None):
+                self.cluster['cluster_key'] = fields.get(b'cluster_key', [b""])[0].decode("utf-8")
             with open('/etc/iotfw/cluster.db', 'wb') as handle:
                 pickle.dump(self.cluster, handle)
 

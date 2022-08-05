@@ -27,7 +27,7 @@ chown -R iotfw: /etc/iotfw
 chown iotfw: /usr/local/bin/iotfw-admin.py
 chown -R iotfw: /var/lib/iotfw-admin
 
-if [ $1 != "test" ]; then
+if [ "$1" != "test" ]; then
 
   # Reload systemd config
   systemctl daemon-reload

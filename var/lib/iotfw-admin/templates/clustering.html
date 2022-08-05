@@ -21,11 +21,11 @@
           <td>Cluster Name:</td><td><input name='cluster_name'></td>
         </tr>
         <tr>
-          <td>Cluster Key:</td><td><input type=password></td>
+          <td>Cluster Key:</td><td><input name='cluster_key' type=password></td>
         </tr>
       </table>
 
-      <input type=submit value="Create Cluster">
+      <input type=submit name='create' value="Create Cluster">
       </form>
 
       <h1>Join an Existing Cluster</h1>
@@ -36,11 +36,11 @@
           <td>Existing Cluster Node IP:</td> <td><input></td>
         </tr>
         <tr>
-          <td>Cluster Key:</td> <td><input type=password></td>
+          <td>Cluster Key:</td> <td><input name='cluster_key' type=password></td>
         </tr>
       </table>
 
-      <input type=submit value="Join Cluster">
+      <input type=submit name='join' value="Join Cluster">
       </form>
 
     {% else %}
