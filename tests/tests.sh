@@ -6,9 +6,11 @@ echo Running setup script
 ./setup.sh test
 
 echo Copy test cluster configuration
+cp /etc/iotfw/.test.cluster.db /etc/iotfw/cluster.db
 
 echo Start iotfw-admin service
 ./usr/local/bin/iotfw-admin.py -i /tmp/iotfw-admin.pid -p 8081 &
+sleep 5
 
 echo Check PID file exists
 if [ ! -f "/tmp/iotfw-admin.pid" ]; then
