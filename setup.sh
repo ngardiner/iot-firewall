@@ -5,16 +5,18 @@ if [ -d iot-firewall ]; then
   cd iot-firewall || exit 0
 fi
 
-# Add iotfw account
-getent passwd iotfw > /dev/null
-if [ $? -ne 0 ]; then
-  useradd iotfw
-fi
+if [ "$1" != "test" ]; then
+  # Add iotfw account
+  getent passwd iotfw > /dev/null
+  if [ $? -ne 0 ]; then
+    useradd iotfw
+  fi
 
-# Create pidfile directory
-if [ ! -d /var/run/iotfw ]; then
-  mkdir -p /var/run/iotfw
-  chown -R iotfw: /var/run/iotfw
+  # Create pidfile directory
+  if [ ! -d /var/run/iotfw ]; then
+    mkdir -p /var/run/iotfw
+    chown -R iotfw: /var/run/iotfw
+  fi
 fi
 
 # Copy files

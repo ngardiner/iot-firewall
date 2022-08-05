@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import getopt
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from jinja2 import Template, Environment, FileSystemLoader
 from os import getpid, path
@@ -94,8 +95,17 @@ class AdminServer(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":        
 
+    # Parse command-line options
+    try:
+        opts, args = getopt.getopt(argv, "i:")
+
+    pidfn = '/var/run/iotfw/iotfw-admin.pid'
+    for opt, arg in opts:
+        if opt == '-i':
+            pidfn = arg
+
     # Write PID file
-    with open('/var/run/iotfw/iotfw-admin.pid', 'w', encoding='utf-8') as pidfile:
+    with open(pidfn, 'w', encoding='utf-8') as pidfile:
         pidfile.write(str(getpid()))
 
     webServer = HTTPServer((hostName, serverPort), AdminServer)
