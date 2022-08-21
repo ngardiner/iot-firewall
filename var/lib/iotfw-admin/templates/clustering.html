@@ -12,7 +12,7 @@
   <body>
     {% include "menubar.html" %}
 
-    {% if cluster['name'] is not defined %}
+    {% if cluster['cluster_name'] is not defined %}
       <h1>Create a New Cluster</h1>
 
       <form action='/save/cluster' method=POST>
@@ -44,6 +44,13 @@
       </form>
 
     {% else %}
+      <h1>Cluster Details</h1>
+      <table>
+        <tr>
+          <td>Cluster Name</td>
+          <td>{{ cluster.cluster_name }}</td>
+        </tr>
+      </table>
     {% endif %}
     <form>
     </form>

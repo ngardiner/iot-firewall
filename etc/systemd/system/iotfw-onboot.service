@@ -1,0 +1,8 @@
+[Unit]
+Description=IoT Firewall On-Boot Actions
+
+[Service]
+ExecStart=/usr/local/bin/iotfw-onboot.sh
+
+[Install]
+WantedBy=multi-user.target kea-dhcp4-server.service iotfw-admin.service

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Install Required Packages
+apt -y install kea-dhcp4-server
+
 # Enter the iot-firewall directory if we have not already
 if [ -d iot-firewall ]; then
   cd iot-firewall || exit 0
