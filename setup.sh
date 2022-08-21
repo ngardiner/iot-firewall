@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Install Required Packages
-apt -y install kea-dhcp4-server
+apt -y install kea-dhcp4-server python3-pip
+pip3 install pynetbox
 
 # Enter the iot-firewall directory if we have not already
 if [ -d iot-firewall ]; then

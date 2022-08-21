@@ -19,8 +19,28 @@
 
         <p>Please switch to the Clustering tab to define your cluster, before continuing.
     {% else %}
-    {% endif %}
+
     <form>
+    <table>
+      <tr>
+        <th>Netbox Server IP</th>
+        <td><input></td>
+      </tr>
+      <tr>
+        <th>Netbox Token</th>
+        <td><input></td>
+      </tr>
+      <tr>
+        <th>DHCP Server</th>
+        <td>
+          <select>
+            <option>Disabled</option>
+            <option>Enabled</option>
+          </select>
+        </td>
+      </tr>
+    </table>
     </form>
+    {% endif %}
   </body>
 </html>
